@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection.PortableExecutable;
 
 namespace ExceptionHandlingExercise
 {
@@ -10,10 +11,40 @@ namespace ExceptionHandlingExercise
         {
             // -----------------------------------------------------------------------------
             // First create an char[], it must contain 6 numbers and 3 letters - name it arr
+            char[] arr = { '2', '6', '7', '8', '3', '9', 'A', 'A', 'B' };
             // Create a list called numbers that will hold integers
-            // Create an string variable with an empty string initializer - name it str
+            List<int> numbers = new List<int>();
+             // Create an string variable with an empty string initializer - name it str
+             string str = string.Empty;
+           // using a foreach loop, attempt to parse the elements in your char[] with int.Parse()
+        
+            foreach (char character in arr)
+            {
+                try
+                {
+                    str = character.ToString();
 
-            // using a foreach loop, attempt to parse the elements in your char[] with int.Parse()
+                    int number = int.Parse(str);
+
+                    numbers.Add(number);
+
+                }
+
+                catch (Exception)
+
+                {
+                    Console.WriteLine($"Unable to Parse '{character}'");
+                
+                }
+                Console.WriteLine("Parsed numbers:");
+                foreach (var num in numbers)
+                {
+                    Console.WriteLine(num);
+                }
+
+
+            }
+
             // and Exceptions will be thrown 
             // Below we will set this up 
             // ------------------------------------------------------------------------------
